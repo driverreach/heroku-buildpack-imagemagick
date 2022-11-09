@@ -4,7 +4,7 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Install ImageMagick"
+echo "-----> Install DriverReach ImageMagick"
 
 BUILD_DIR=$1
 CACHE_DIR=$2
@@ -54,7 +54,7 @@ if [ ! -f $CACHE_FILE ]; then
   fi
   tar xvf $BUILD_DIR/$IMAGE_MAGICK_FILE | indent
 
-  echo "-----> Building ImageMagick"
+  echo "-----> Building DriverReach ImageMagick"
   cd $IMAGE_MAGICK_DIR
   export CPPFLAGS="-I$INSTALL_DIR/include"
   export LDFLAGS="-L$INSTALL_DIR/lib"
@@ -64,7 +64,7 @@ if [ ! -f $CACHE_FILE ]; then
   rm -rf $IMAGE_MAGICK_DIR
 
   # cache for future deploys
-  echo "-----> Caching ImageMagick installation"
+  echo "-----> Caching DriverReach ImageMagick installation"
   cd $VENDOR_DIR
   REL_INSTALL_DIR="imagemagick"
   tar czf $REL_INSTALL_DIR.tar.gz $REL_INSTALL_DIR
@@ -77,12 +77,12 @@ if [ ! -f $CACHE_FILE ]; then
 
 else
   # cache exists, extract it
-  echo "-----> Extracting ImageMagick $CACHE_FILE => $VENDOR_DIR"
+  echo "-----> Extracting DriverReach ImageMagick $CACHE_FILE => $VENDOR_DIR"
   mkdir -p $VENDOR_DIR
   tar xzf $CACHE_FILE -C $VENDOR_DIR
 fi
 
-echo "-----> Writing policy file (StS)"
+echo "-----> Writing DriverReach ImageMagick policy file"
 # use Heroku-provided policy as default, but increase RAM & disk cache size
 cat $CONFIG_DIR/policy.xml |
   sed 's/policy domain="resource" name="disk" value="[^"]*"/policy domain="resource" name="disk" value="10GiB"/' |
@@ -90,7 +90,7 @@ cat $CONFIG_DIR/policy.xml |
   sed 's/policy domain="resource" name="memory" value="[^"]*"/policy domain="resource" name="memory" value="6GiB"/' \
   > $INSTALL_DIR$CONFIG_DIR/policy.xml
 
-echo "-----> Writing config file"
+echo "-----> Writing DriverReach ImageMagick config file"
 cat > $INSTALL_DIR$CONFIG_DIR/magic.xml <<EOF
 <magicmap>
   <magic name="GIF" offset="0" target="GIF8"/>
