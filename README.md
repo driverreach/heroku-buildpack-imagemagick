@@ -20,7 +20,7 @@ This one works with [Heroku stack](https://devcenter.heroku.com/articles/stack) 
 
 In your project root:
 
-`heroku buildpacks:add https://github.com/q-m/heroku-buildpack-imagemagick  --index 1 --app HEROKU_APP_NAME`
+`heroku buildpacks:add https://github.com/DriverReach/heroku-buildpack-imagemagick  --index 1 --app HEROKU_APP_NAME`
 
 "index 1" means that imagemagick will be installed first.
 
