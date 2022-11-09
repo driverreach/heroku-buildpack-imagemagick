@@ -34,5 +34,7 @@ By default, the `bin/compile` script will look for the latest 6.x version from t
 ### Clear cache
 Since the installation is cached you might want to clean it out due to config changes.
 
-1. `heroku plugins:install heroku-repo`
-2. `heroku repo:purge_cache -app HEROKU_APP_NAME`
+Using the [Heroku Builds CLI](https://github.com/heroku/heroku-builds)
+
+1. `heroku plugins:install heroku-builds`
+2. `heroku builds:cache:purge -a HEROKU_APP_NAME`
