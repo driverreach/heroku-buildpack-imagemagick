@@ -1,28 +1,25 @@
 heroku-buildpack-imagemagick
 =================================
 
-[![heroku buildpack](https://img.shields.io/badge/heroku-buildpack-blueviolet)](https://elements.heroku.com/buildpacks/q-m/heroku-buildpack-imagemagick)
+[![heroku buildpack](https://img.shields.io/badge/heroku-buildpack-blueviolet)](https://elements.heroku.com/buildpacks/)
 
-This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for vendoring the ImageMagick binaries into your project.
+This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for vendoring the ImageMagick binaries into our application.
 
-This one works with [Heroku stack](https://devcenter.heroku.com/articles/stack) `heroku-18` and will always give you the latest 6.x version.
+Cloned from https://github.com/StructionSite/heroku-buildpack-imagemagick and modified to fit our needs.
 
-### Differences from Original
-
-- fixed a typo
-- changed policy parameters
+### Differences from [original ImageMagick configuration](https://www.imagemagick.org/script/resources.php)
+- changed policy memory limit parameters
   - `disk` to 10GB
   - `memory` to 6GB
   - `map` to 4GB
-- prepend app-specific policy folder (`/app/.magick`) to `MAGICK_CONFIGURE_PATH`
 
 ### Install
 
-In your project root:
+Open a terminal and enter the following command:
 
 `heroku buildpacks:add https://github.com/DriverReach/heroku-buildpack-imagemagick  --index 1 --app HEROKU_APP_NAME`
 
-"index 1" means that imagemagick will be installed first.
+Note: "index 1" moves a buildpack to the top of the buildpack install order
 
 ### Changing version
 Go to https://www.imagemagick.org/download/releases and find a version you want (*.tar.gz).
