@@ -90,16 +90,6 @@ cat $CONFIG_DIR/policy.xml |
   sed 's/policy domain="resource" name="memory" value="[^"]*"/policy domain="resource" name="memory" value="6GiB"/' \
   > $INSTALL_DIR$CONFIG_DIR/policy.xml
 
-echo "-----> Writing DriverReach ImageMagick config file"
-cat > $INSTALL_DIR$CONFIG_DIR/magic.xml <<EOF
-<magicmap>
-  <magic name="GIF" offset="0" target="GIF8"/>
-  <magic name="JPEG" offset="0" target="\377\330\377"/>
-  <magic name="PNG" offset="0" target="\211PNG\r\n\032\n"/>
-  <magic name="TIFF" offset="0" target="\115\115\000\052"/>
-</magicmap>
-EOF
-
 # update PATH and LD_LIBRARY_PATH
 echo "-----> Updating environment variables"
 PROFILE_PATH="$BUILD_DIR/.profile.d/imagemagick.sh"
@@ -108,6 +98,5 @@ mkdir -p $(dirname $PROFILE_PATH)
 cat > $PROFILE_PATH <<EOF
 export PATH=$ACTUAL_INSTALL_PATH/bin:\$PATH
 export LD_LIBRARY_PATH=$ACTUAL_INSTALL_PATH/lib:\$LD_LIBRARY_PATH:/usr/local/lib
-export MAGICK_CONFIGURE_PATH=$HOME/.magick:$ACTUAL_INSTALL_PATH$CONFIG_DIR
 EOF
 echo "-----> Done updating environment variables. All set for ImageMagick."
