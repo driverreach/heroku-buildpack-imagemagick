@@ -98,5 +98,6 @@ mkdir -p $(dirname $PROFILE_PATH)
 cat > $PROFILE_PATH <<EOF
 export PATH=$ACTUAL_INSTALL_PATH/bin:\$PATH
 export LD_LIBRARY_PATH=$ACTUAL_INSTALL_PATH/lib:\$LD_LIBRARY_PATH:/usr/local/lib
+export MAGICK_CONFIGURE_PATH=$HOME/.magick:$ACTUAL_INSTALL_PATH$CONFIG_DIR
 EOF
 echo "-----> Done updating environment variables. All set for ImageMagick."
