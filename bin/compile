@@ -85,9 +85,12 @@ fi
 echo "-----> Writing DriverReach ImageMagick policy file"
 # use Heroku-provided policy as default, but increase RAM & disk cache size
 cat $CONFIG_DIR/policy.xml |
-  sed 's/policy domain="resource" name="disk" value="[^"]*"/policy domain="resource" name="disk" value="10GiB"/' |
+  sed 's/policy domain="resource" name="disk" value="[^"]*"/policy domain="resource" name="disk" value="8GiB"/' |
   sed 's/policy domain="resource" name="map" value="[^"]*"/policy domain="resource" name="map" value="4GiB"/' |
-  sed 's/policy domain="resource" name="memory" value="[^"]*"/policy domain="resource" name="memory" value="6GiB"/' \
+  sed 's/policy domain="resource" name="memory" value="[^"]*"/policy domain="resource" name="memory" value="2GiB"/' |
+  sed 's/policy domain="resource" name="width" value="[^"]*"/policy domain="resource" name="width" value="128KP"/' |
+  sed 's/policy domain="resource" name="height" value="[^"]*"/policy domain="resource" name="height" value="128KP"/' |
+  sed 's/policy domain="resource" name="area" value="[^"]*"/policy domain="resource" name="area" value="1.0737GP"/' | \
   > $INSTALL_DIR$CONFIG_DIR/policy.xml
 
 # update PATH and LD_LIBRARY_PATH
